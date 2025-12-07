@@ -1,0 +1,30 @@
+{
+  "name": "darkx-gamezone",
+  "description": "DARKX-OFFICIAL GAMEZONE - simple game listing with admin panel",
+  "repository": "https://github.com/xxxwongtocion/Gamezone",
+  "logo": "https://raw.githubusercontent.com/xxxwongtocion/Gamezone/main/public/img/logo.png",
+  "keywords": ["nodejs","express","game","admin","dashboard"],
+  "buildpacks": [
+    { "url": "heroku/nodejs" }
+  ],
+  "env": {
+    "ADMIN_PASS": {
+      "description": "Admin panel password",
+      "value": "DARKX2025"
+    },
+    "USER_PASSCODE": {
+      "description": "Passcode to unlock special games",
+      "value": "DARKX2025USER"
+    },
+    "SESSION_SECRET": {
+      "description": "Secret for express-session",
+      "value": "darkx_secret_change_me"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
