@@ -1,0 +1,36 @@
+<% include('layout.ejs') %>
+<% layout('layout') -%>
+
+<section class="welcome">
+  <h2>Welcome</h2>
+  <p>To access free moded games and more you <strong>must pay 1,000 TSH</strong>. If you already have the passcode enter it below.</p>
+  <form action="/unlock-pass" method="post" class="pass-form">
+    <input type="text" name="passcode" placeholder="Enter passcode (e.g. DARKX2025USER)" />
+    <button type="submit">Submit</button>
+  </form>
+  <p>Or <a id="whatsapp-pay" href="https://wa.me/255775710774?text=${encodeURIComponent('Nataka access passcode')}" target="_blank">Pay to access the passcode (WhatsApp)</a></p>
+</section>
+
+<section class="games-list">
+  <h3>Available Games</h3>
+  <% if (!games || games.length === 0) { %>
+    <p>No games yet. Come back later.</p>
+  <% } else { %>
+    <ul>
+      <% games.forEach(function(g){ %>
+        <li class="game-item">
+          <h4><%= g.name %> <small>(<%= g.size || 'size unknown' %>)</small></h4>
+          <p><%= g.description || '' %></p>
+          <a class="btn" href="<%= g.url %>" target="_blank">Get the game</a>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</section>
+
+<% if (passUnlocked) { %>
+  <section class="moded-section">
+    <h3>Unlocked: Moded / Special Games</h3>
+    <p>Passcode accepted. Enjoy the unlocked content above (if any).</p>
+  </section>
+<% } %>
