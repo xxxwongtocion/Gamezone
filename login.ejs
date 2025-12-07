@@ -1,0 +1,10 @@
+<% include('layout.ejs') %>
+<section class="login">
+  <h2>Admin Login</h2>
+  <% if (error) { %><p class="error"><%= error %></p><% } %>
+  <form action="/admin/login" method="post">
+    <input type="password" name="password" placeholder="Enter admin password" required />
+    <button type="submit">Login</button>
+  </form>
+  <p>Admin password is <strong>DARKX2025</strong> (default).</p>
+</section>
