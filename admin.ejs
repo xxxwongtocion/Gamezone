@@ -1,0 +1,28 @@
+<% include('layout.ejs') %>
+<section class="admin-panel">
+  <h2>Admin Panel</h2>
+  <% if (message) { %><p class="info"><%= message %></p><% } %>
+
+  <form action="/admin/add" method="post" class="add-form">
+    <input name="name" placeholder="Game name" required />
+    <input name="size" placeholder="Size (e.g. 50MB)" />
+    <input name="url" placeholder="Download link (full URL)" required />
+    <textarea name="description" placeholder="Short description"></textarea>
+    <button type="submit">Add Game</button>
+  </form>
+
+  <h3>Existing games</h3>
+  <% if (games && games.length) { %>
+    <ul>
+      <% games.forEach(function(g){ %>
+        <li>
+          <strong><%= g.name %></strong> - <%= g.size %>
+          <form action="/admin/delete" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="<%= g.id %>" />
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</section>
